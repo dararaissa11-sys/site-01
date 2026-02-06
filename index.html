@@ -2,59 +2,63 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Campanha pela Vida | Jesus é o Caminho</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Campanha Espírita em Defesa da Vida">
+<title>Campanha pela Vida</title>
 <link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter&display=swap" rel="stylesheet">
 </head>
-
 <body>
 
 <header>
-  <h1 id="titulo"></h1>
-  <p id="subtitulo"></p>
+  <h1>Campanha pela Vida</h1>
+  <p>Superando Depressão, Ansiedade e Vícios</p>
 </header>
 
-<nav>
-  <a href="#sobre">Sobre</a>
-  <a href="#cronograma">Cronograma</a>
-  <a href="#galeria">Galeria</a>
-  <a href="#chat">Atendimento</a>
-</nav>
-
-<div class="idiomas">
-  <button onclick="carregarIdioma('pt')">🇧🇷 PT</button>
-  <button onclick="carregarIdioma('en')">🇺🇸 EN</button>
-</div>
-
-<section id="sobre">
-  <h2 id="sobreTitulo"></h2>
-  <p id="textoSobre"></p>
+<section class="hero">
+  <img src="imagens/abertura-campanha.png" alt="Abertura da Campanha pela Vida">
 </section>
 
-<section id="cronograma">
-  <h2>Cronograma</h2>
-  <ul id="listaCronograma"></ul>
+<section class="informes">
+  <h2>📢 Informes Oficiais</h2>
+  <p>
+    A <strong>Campanha pela Vida</strong> é uma iniciativa espiritual de acolhimento,
+    orientação e fortalecimento emocional, dedicada à prevenção do sofrimento psíquico
+    e à valorização da vida.
+  </p>
+
+  <p>
+    O encontro de abertura aborda a depressão, a ansiedade e os vícios de forma
+    integral, considerando o ser humano em suas dimensões <strong>emocional,
+    espiritual e moral</strong>, promovendo compreensão, esperança e caminhos de superação.
+  </p>
+
+  <p>
+    Ao final, haverá uma vivência prática com técnicas de respiração e meditação guiada,
+    com foco na redução da ansiedade e no equilíbrio interior.
+  </p>
+
+  <ul>
+    <li><strong>📅 Data:</strong> 21 de fevereiro (sábado)</li>
+    <li><strong>⏰ Horário:</strong> A partir das 18h</li>
+    <li><strong>⌛ Duração:</strong> Aproximadamente 2 horas</li>
+    <li><strong>👤 Convidado:</strong> Dr. Gerardo Campana – Médico Psiquiatra</li>
+  </ul>
 </section>
 
-<section id="galeria">
-  <h2>Galeria</h2>
-  <div id="fotos"></div>
-</section>
+<section class="chat">
+  <h2>💬 Acolhimento Espiritual</h2>
 
-<section id="chat">
-  <h2 id="chatTitulo"></h2>
-  <div id="chatbox">
-    <div id="mensagens"></div>
-    <input id="entrada" placeholder="Digite sua pergunta">
-    <button onclick="enviar()">Enviar</button>
-  </div>
+  <div id="chat-box"></div>
+
+  <input type="text" id="userInput" placeholder="Digite sua pergunta...">
+  <button onclick="sendMessage()">Enviar</button>
 </section>
 
 <footer>
-  <p id="avisoLegal"></p>
-  <p>© Fraternidade Espírita Jesus é o Caminho</p>
+  <p>
+    ⚠️ Este site possui caráter informativo e espiritual.
+    Não substitui acompanhamento médico, psicológico ou psiquiátrico.
+  </p>
+  <p>© Campanha pela Vida</p>
 </footer>
 
 <script src="script.js"></script>
