@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Administração | Campanha pela Vida</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+<style>
+body{
+  font-family:Inter, sans-serif;
+  background:#F4F6FA;
+  margin:0;
+}
+header{
+  background:#0A1F44;
+  color:white;
+  padding:20px;
+  text-align:center;
+}
+section{
+  max-width:900px;
+  margin:30px auto;
+  background:white;
+  padding:30px;
+  border-radius:10px;
+}
+textarea,input{
+  width:100%;
+  padding:10px;
+  margin:10px 0;
+}
+button{
+  background:#F2C94C;
+  border:none;
+  padding:12px 20px;
+  font-weight:bold;
+  cursor:pointer;
+}
+pre{
+  background:#111;
+  color:#0f0;
+  padding:15px;
+  overflow:auto;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Painel Administrativo</h1>
+  <p>Campanha pela Vida</p>
+</header>
+
+<section>
+  <h2>Texto "Sobre a Campanha"</h2>
+  <textarea id="sobre" rows="5"></textarea>
+</section>
+
+<section>
+  <h2>Aviso Legal</h2>
+  <textarea id="aviso" rows="3"></textarea>
+</section>
+
+<section>
+  <h2>Cronograma (um por linha)</h2>
+  <textarea id="cronograma" rows="6"></textarea>
+</section>
+
+<section>
+  <h2>Respostas do Chatbot Espírita</h2>
+  <p>Formato: palavra-chave = resposta</p>
+  <textarea id="chatbot" rows="10"></textarea>
+</section>
+
+<section>
+  <button onclick="gerar()">Gerar Arquivos Atualizados</button>
+</section>
+
+<section>
+  <h2>📘 conteudo.json</h2>
+  <pre id="saidaConteudo"></pre>
+
+  <h2>🧠 chatbot.json</h2>
+  <pre id="saidaChatbot"></pre>
+</section>
+
+<script>
+async function carregar(){
+  const c = await fetch("data/conteudo.json").then(r=>r.json());
+  const ch = await fetch("data/chatbot.json").then(r=>r.json());
+
+  sobre.value = c.sobre || "";
+  aviso.value = c.avisoLegal || "";
+  cronograma.value = (c.cronograma||[]).join("\n");
+
+  let linhas=[];
+  for(let k in ch){
+    linhas.push(k+" = "+ch[k]);
+  }
+  chatbot.value = linhas.join("\n");
+}
+
+function gerar(){
+  const conteudo = {
+    sobre: sobre.value,
+    avisoLegal: aviso.value,
+    cronograma: cronograma.value.split("\n").filter(l=>l.trim())
+  };
+
+  let chatObj = {};
+  chatbot.value.split("\n").forEach(l=>{
+    const p = l.split("=");
+    if(p.length>=2){
+      chatObj[p[0].trim()] = p.slice(1).join("=").trim();
+    }
+  });
+
+  saidaConteudo.innerText = JSON.stringify(conteudo,null,2);
+  saidaChatbot.innerText = JSON.stringify(chatObj,null,2);
+}
+
+carregar();
+</script>
+
+</body>
+</html>
