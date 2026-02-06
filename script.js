@@ -1,49 +1,27 @@
-let idiomaAtual = "pt";
+function sendMessage() {
+  const input = document.getElementById("userInput");
+  const chat = document.getElementById("chat-box");
 
-async function carregarIdioma(id){
-  idiomaAtual = id;
-  const r = await fetch(`lang/${id}.json`);
-  const t = await r.json();
+  const userText = input.value.trim();
+  if (!userText) return;
 
-  document.getElementById("titulo").innerText = t.titulo;
-  document.getElementById("subtitulo").innerText = t.subtitulo;
-  document.getElementById("sobreTitulo").innerText = t.sobreTitulo;
-  document.getElementById("textoSobre").innerText = t.sobreTexto;
-  document.getElementById("chatTitulo").innerText = t.chatTitulo;
-  document.getElementById("avisoLegal").innerText = t.avisoLegal;
+  chat.innerHTML += `<div><strong>Você:</strong> ${userText}</div>`;
+
+  let response = "Estamos aqui para acolher você. Respire fundo e confie que não está sozinho(a).";
+
+  const text = userText.toLowerCase();
+
+  if (text.includes("depress")) {
+    response = "A depressão é uma dor silenciosa. Buscar apoio espiritual e humano é um ato de coragem.";
+  } else if (text.includes("ansiedad")) {
+    response = "A ansiedade pode ser amenizada com respiração consciente, oração e acolhimento.";
+  } else if (text.includes("vício") || text.includes("vicio")) {
+    response = "A libertação dos vícios é um processo. Há sempre esperança e novos caminhos.";
+  } else if (text.includes("horário") || text.includes("data")) {
+    response = "O encontro acontece dia 21 de fevereiro, a partir das 18h.";
+  }
+
+  chat.innerHTML += `<div><strong>Campanha:</strong> ${response}</div>`;
+  input.value = "";
+  chat.scrollTop = chat.scrollHeight;
 }
-
-async function carregarConteudo(){
-  const r = await fetch("data/conteudo.json");
-  const d = await r.json();
-
-  d.cronograma.forEach(i=>{
-    const li=document.createElement("li");
-    li.innerText=i;
-    listaCronograma.appendChild(li);
-  });
-
-  d.fotos.forEach(f=>{
-    const a=document.createElement("a");
-    a.href=f;
-    a.download="";
-    a.innerHTML=`<img src="${f}">`;
-    fotos.appendChild(a);
-  });
-}
-
-async function enviar(){
-  const msg=entrada.value;
-  const r=await fetch("/chat",{
-    method:"POST",
-    headers:{"Content-Type":"application/json"},
-    body:JSON.stringify({mensagem:msg})
-  });
-  const d=await r.json();
-
-  mensagens.innerHTML+=
-    `<p><b>Você:</b> ${msg}</p><p><b>Atendente:</b> ${d.resposta}</p>`;
-}
-
-carregarIdioma("pt");
-carregarConteudo();
