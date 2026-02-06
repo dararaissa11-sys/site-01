@@ -1,77 +1,67 @@
 body {
-  margin:0;
-  font-family:'Inter',sans-serif;
-  background:#F9FAFC;
-  color:#333;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f8fb;
+  color: #033;
 }
 
 header {
-  background:linear-gradient(135deg,#0A1F44,#102A56);
-  color:white;
-  text-align:center;
-  padding:70px 20px;
+  background: linear-gradient(90deg, #0a4b78, #0b7fc7);
+  color: white;
+  padding: 30px;
+  text-align: center;
 }
 
-header h1 {
-  font-family:'Playfair Display',serif;
-  font-size:3rem;
-}
-
-nav {
-  background:#F2C94C;
-  padding:15px;
-  text-align:center;
-}
-
-nav a {
-  margin:0 15px;
-  text-decoration:none;
-  color:#0A1F44;
-  font-weight:bold;
-}
-
-.idiomas {
-  text-align:center;
-  margin:15px;
+.hero img {
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
 }
 
 section {
-  max-width:1000px;
-  margin:auto;
-  padding:50px 20px;
+  padding: 30px;
+  max-width: 900px;
+  margin: auto;
 }
 
-#chatbox {
-  background:white;
-  padding:20px;
-  border-radius:12px;
-  box-shadow:0 4px 12px rgba(0,0,0,.1);
+.informes h2, .chat h2 {
+  color: #0a4b78;
 }
 
-#mensagens {
-  height:220px;
-  overflow-y:auto;
-  margin-bottom:10px;
+.chat {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px #ccc;
+}
+
+#chat-box {
+  height: 300px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+#chat-box div {
+  margin-bottom: 8px;
+}
+
+input {
+  width: 75%;
+  padding: 10px;
 }
 
 button {
-  background:#0A1F44;
-  color:white;
-  border:none;
-  padding:10px 18px;
-  border-radius:6px;
-  cursor:pointer;
-}
-
-#fotos img {
-  width:200px;
-  margin:10px;
-  border-radius:8px;
+  padding: 10px;
+  background: #0b7fc7;
+  color: white;
+  border: none;
+  cursor: pointer;
 }
 
 footer {
-  background:#0A1F44;
-  color:white;
-  text-align:center;
-  padding:30px;
+  text-align: center;
+  padding: 20px;
+  background: #e6eef4;
+  font-size: 14px;
 }
